@@ -13,58 +13,27 @@
 <h1>
     getInstalledRelatedApps
 </h1>
+<button onclick="openApp()">Open App</button>
 
-<p id="about">
-    The <a href="https://developers.google.com/web/updates/2018/12/get-installed-related-apps">
-    <code>getInstalledRelatedApps</code></a> API is a new web platform API
-    that allows your web app to check to see if your native app is installed
-    on the users device, and vice versa.
-</p>
-<div class="instructions">
-    <span class="instructionsCount">1</span>
-    <span>
-        Install <a href="rket://details?id=vig.tictop.app">this appaaaaaaa</a>
-      </span>
-</div>
-<div class="instructions">
-    <span class="instructionsCount">2</span>
-    <span>
-        Come back to this page
-      </span>
-</div>
-<p>
-    This demo checks to see if a specific
-    <a href="https://play.google.com/store/apps/details?id=vig.tictop.app">demo app</a> is installed
-    from the Google Play Store. Only when it is installed will you see it
-    listed below. Try installing it to see how <code>getInstalledRelatedApps</code>
-    works when the expected app is installed.
-</p>
+<script>
+    function openApp() {
+        let userAgent = navigator.userAgent;
 
-<p>
-    Check out the <a href="https://glitch.com/edit/#!/get-installed-apps">source</a>
-    for this sample, or
-    <a href="https://glitch.com/edit/#!/remix/get-installed-apps">remix it</a>
-    on Glitch.
-</p>
+        // Check if the user is on a mobile device
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent)) {
+            // Try to open the app using a custom URI scheme
+            window.location.href = "tictop.momo.merchant://";
 
-<p id="requireHTTPS" class="hidden">
-    <b>STOP!</b> This page <b>must</b> be served over HTTPS.
-    Please <a>reload this page via HTTPS</a>.
-</p>
-
-<p id="notSupported">
-    <b>Sorry!</b> This browser doesn't support the <code>getInstalledRelatedApps</code>.
-    The API is only available as an origin trial in Chrome 73+ on Android.
-</p>
-
-<div>
-    <b>Installed Apps:</b> <span id="status"></span>
-    <ul id="installedApps">
-    </ul>
-</div>
-
-<script src="/common.js"></script>
-<script src="/demo.js"></script>
-
+            // Wait for 2 seconds to see if the app opens
+            setTimeout(function () {
+                // If the app didn't open, redirect the user to the App Store
+                window.location.href = "itms://itunes.apple.com/us/app/myapp/id123456789?mt=8";
+            }, 2000);
+        } else {
+            // If the user is not on a mobile device, show an error message
+            alert("This feature is only available on mobile devices.");
+        }
+    }
+</script>
 </body>
 </html>
