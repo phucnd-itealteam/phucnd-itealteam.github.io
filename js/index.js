@@ -135,6 +135,7 @@ const onChangeLanguage = (language) => {
 }
 
 const checkInstallApp = async () => {
+    alert("v1");
     const installedApps = await navigator.getInstalledRelatedApps();
     const nativeApp = installedApps.find(app => app.id === 'vig.tictop.app');
     console.log('File: index.js - L: 140 - installedApps', installedApps);
