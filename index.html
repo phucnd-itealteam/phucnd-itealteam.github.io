@@ -1,147 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <link rel="favicon" type="image/x-icon" href="favicon.ico"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"/>
-    <link rel="stylesheet" href="./css/index.css"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Tictop</title>
-
+    <title>PWA - getInstalledRelatedApps</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/style.css">
+    <meta name="theme-color" content="#3f51b5">
     <link rel="manifest" href="/manifest.json">
+    <!-- OT Expires 2020-01-14 -->
+    <link http-equiv="origin-trial" content="At3uhlLvIiUq7b2cW267B1XKvHohHGuxeCqF3FJB/0RaR6BUUC5iOWgfYjkaBwzInT33eAdoSEHpONIpM8h4BQAAAABieyJvcmlnaW4iOiJodHRwczovL2dldC1pbnN0YWxsZWQtYXBwcy5nbGl0Y2gubWU6NDQzIiwiZmVhdHVyZSI6Ikluc3RhbGxlZEFwcCIsImV4cGlyeSI6MTU3OTAyOTYxNn0=">
 </head>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.5/mobile-detect.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="js/translateKey.js"></script>
-<script type="module" src="js/index.js"></script>
-
 <body>
-<header>
-    <div class="header">
-        <div class="header--logo">
-            <img src="./image/logofull.png" height="40px"/>
-        </div>
-    </div>
-</header>
-<section class="body--content" id="download">
-    <!-- <div class="tictop-link__backgroundOverlay"></div> -->
-    <div>
-        <img class="image-overview" src="https://www.tictop.vn/wp-content/uploads/2023/04/Frame-divice-1-scaled.webp"/>
-    </div>
-    <div data-translate="main_title_introduce" class="main_title_introduce">
-    </div>
-    <div data-translate="main_sub_title_introduce" class="main_sub_title_introduce">
-    </div>
+<h1>
+    getInstalledRelatedApps
+</h1>
 
-    <section class="body--download">
-        <p id="notSupported">
-            <b>Sorry!</b> This browser doesn't support the <code>getInstalledRelatedApps</code>.
-            The API is only available as an origin trial in Chrome 73+ on Android.
-        </p>
-        <div>
-            <b>Installed Apps:</b> <span id="status"></span>
-            <ul id="installedApps">
-            </ul>
-        </div>
+<p id="about">
+    The <a href="https://developers.google.com/web/updates/2018/12/get-installed-related-apps">
+    <code>getInstalledRelatedApps</code></a> API is a new web platform API
+    that allows your web app to check to see if your native app is installed
+    on the users device, and vice versa.
+</p>
+<div class="instructions">
+    <span class="instructionsCount">1</span>
+    <span>
+        Install <a href="https://play.google.com/store/apps/details?id=ca.bigbackpack.getinstalledrelatedapps">this app</a>
+      </span>
+</div>
+<div class="instructions">
+    <span class="instructionsCount">2</span>
+    <span>
+        Come back to this page
+      </span>
+</div>
+<p>
+    This demo checks to see if a specific
+    <a href="https://play.google.com/store/apps/details?id=ca.bigbackpack.getinstalledrelatedapps">demo app</a> is installed
+    from the Google Play Store. Only when it is installed will you see it
+    listed below. Try installing it to see how <code>getInstalledRelatedApps</code>
+    works when the expected app is installed.
+</p>
 
-        <pre class="none" translate="no" dir="ltr" is-upgraded=""><a
-                href="http://play.google.com/store/apps/details?id=com.google.android.apps.maps&amp;hl=vi">http://play.google.com/store/apps/details?id=com.google.android.apps.maps</a>
-        </pre>
+<p>
+    Check out the <a href="https://glitch.com/edit/#!/get-installed-apps">source</a>
+    for this sample, or
+    <a href="https://glitch.com/edit/#!/remix/get-installed-apps">remix it</a>
+    on Glitch.
+</p>
 
-        <pre class="none" translate="no" dir="ltr" is-upgraded=""><a
-                href="http://play.google.com/store/apps/details?id=vig.tictop.app&amp;hl=vi">https://play.google.com/store/apps/details?id=vig.tictop.app</a>
-        </pre>
+<p id="requireHTTPS" class="hidden">
+    <b>STOP!</b> This page <b>must</b> be served over HTTPS.
+    Please <a>reload this page via HTTPS</a>.
+</p>
 
+<p id="notSupported">
+    <b>Sorry!</b> This browser doesn't support the <code>getInstalledRelatedApps</code>.
+    The API is only available as an origin trial in Chrome 73+ on Android.
+</p>
 
-        <div data-translate="common_text_download_now"
-             style="width: 100%;font-size: 20px;color: black;padding-bottom: 2rem;text-align: center;">
-        </div>
-        <a id="tictop-btn__appstore" class="tictop-btn__appstore download--button"
-           style="text-decoration: none; cursor: pointer" href=""
-           target="_blank">
-            <img src="https://www.tictop.vn/wp-content/uploads/2021/08/appstore.png" height="60rem;"/>
-        </a>
-        <a id="tictop-btn__googleplay" class="btn__googleplay download--button"
-           style="text-decoration: none; cursor: pointer" href=""
-           target="_blank">
-            <img src="https://www.tictop.vn/wp-content/uploads/2021/08/googleplay.png" height="60rem;"/>
-        </a>
-    </section>
-</section>
+<div>
+    <b>Installed Apps:</b> <span id="status"></span>
+    <ul id="installedApps">
+    </ul>
+</div>
 
-<section class="intro-overview">
-    <div class="intro-overview-bg-overlay"></div>
-    <div class="intro-overview-container">
-        <div class="intro-overview-content">
-            <div data-translate="intro_overview_subtitle" class="intro-overview-subtitle"></div>
-            <div class="intro-overview-title">
-                <div data-translate="intro_overview_title_text_trust_by"></div>
-                <div><span class="intro-overview-title__number">+5000</span> <span
-                        data-translate="intro_overview_title_text_businesses"></span></div>
-            </div>
-            <div class="intro-overview-content-text">
-                <p data-translate="intro_overview_content_text_description"></p>
-            </div>
-
-            <div class="intro-overview-content-db">
-                <span class="intro-overview-content-db_number">85%</span>
-                <span data-translate="intro_overview_content_text_description_1"></span>
-            </div>
-            <div class="intro-overview-content-db">
-                <span class="intro-overview-content-db_number">80%</span>
-                <span data-translate="intro_overview_content_text_description_2"></span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="restart">
-    <div class="restart--container">
-        <div style="display: flex; flex-wrap: wrap; align-items: center;">
-            <div style="display: flex; align-items: center; justify-content: center; padding: 1rem; border-radius: 50%; background-color: white; width: 40px; height: 40px; margin-right: 2rem;">
-                <img
-                        src="./image/download.svg"
-                        width="20px"
-                />
-            </div>
-            <div>
-                <p data-translate="card_start_try_title"
-                   style="text-transform: uppercase;letter-spacing: 0.05em;font-weight: 500;color: var(--current-600);"></p>
-                <p data-translate="card_start_try_sub_title"
-                   style="letter-spacing: 0.1em; color: var(--current-500)"></p>
-            </div>
-        </div>
-
-        <div class="restart--button" onclick="">
-            <a data-translate="common_text_download_now" href="#download"></a>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <div class="flex-center" style="flex-direction: column;">
-        <img src="https://vigtech.vn/wp-content/uploads/2021/09/vig_text-300x109.png" width="80"/>
-        <div data-translate="common_name_company" style="font-weight: 600; color: #076260; padding: 1rem 0rem;"></div>
-    </div>
-    <div class="flex-center" style="padding-bottom: 2rem;">
-        <a class="link_website" data-translate="common_text_link_tictop_website" href="" target="_blank"
-           style="margin-right: 1rem;"></a>
-        <div class="custom-select">
-            <select class="selector_language" id="select_change_language">
-                <option value="vi" data-translate="common_text_language_vietnamese" data-key="vi"></option>
-                <option value="en" data-translate="common_text_language_english" data-key="en"></option>
-                <option value="fr" data-translate="common_text_language_france" data-key="fr"></option>
-            </select>
-        </div>
-    </div>
-    <div data-translate="footer_copy_right_text"></div>
-</footer>
+<script src="/common.js"></script>
+<script src="/demo.js"></script>
 
 </body>
-
 </html>
