@@ -134,12 +134,22 @@ const onChangeLanguage = (language) => {
     translate();
 }
 
+const checkInstallApp = async (language) => {
+    const installedApps = await navigator.getInstalledRelatedApps();
+    const nativeApp = installedApps.find(app => app.id === 'vig.tictop.app');
+
+    if (nativeApp) {
+        alert(JSON.stringify(nativeApp))
+    }
+}
+
 // Init
 const init = () => {
     translate();
     setLinkToButtonRegister();
     onSetLinkRedirectWeb();
     initSelectElement();
+    checkInstallApp();
 }
 
 window.onload = () => {
