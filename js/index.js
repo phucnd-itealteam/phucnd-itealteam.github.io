@@ -5,6 +5,16 @@ const LINK_GOOGLE_PLAY_MOBILE = 'https://vigtek.page.link/?link=https://tictop.a
 const LINK_APPSTORE_WEB = 'https://apps.apple.com/vn/app/tictop/id1582398478';
 const LINK_GOOGLE_PLAY_WEB = 'https://play.google.com/store/apps/details?id=vig.tictop.app';
 
+const checkInstallApp = async (btn_googleplay) => {
+    const installedApps = await navigator.getInstalledRelatedApps();
+    const nativeApp = installedApps.find(app => app.id === 'vig.tictop.app');
+    if (nativeApp) {
+        btn_googleplay.href = "tictop.open.link.app://";
+    } else {
+        btn_googleplay.href = LINK_GOOGLE_PLAY_WEB;
+    }
+}
+
 
 // Setting href button register
 const setLinkToButtonRegister = () => {
@@ -20,12 +30,19 @@ const setLinkToButtonRegister = () => {
             btn_googleplay.style.display = 'none';
         } else {
             btn_appStore.style.display = 'none';
+
+            checkInstallApp(btn_googleplay)
+                .then()
+                .catch(err => {
+                    console.error('Err', err)
+                })
         }
     } else {
         btn_appStore.href = LINK_APPSTORE_WEB;
         btn_googleplay.href = LINK_GOOGLE_PLAY_WEB;
     }
 };
+
 
 // Get Language
 const detectLanguage = () => {
@@ -134,18 +151,6 @@ const onChangeLanguage = (language) => {
     translate();
 }
 
-const checkInstallApp = async () => {
-    alert("v1");
-    const installedApps = await navigator.getInstalledRelatedApps();
-    const nativeApp = installedApps.find(app => app.id === 'vig.tictop.app');
-    console.log('File: index.js - L: 140 - installedApps', installedApps);
-    console.log('File: index.js - L: 140 - nativeApp', nativeApp);
-    if (nativeApp) {
-        alert(JSON.stringify(nativeApp))
-    }
-
-    alert(JSON.stringify(installedApps))
-}
 
 // Init
 const init = () => {
@@ -153,7 +158,6 @@ const init = () => {
     setLinkToButtonRegister();
     onSetLinkRedirectWeb();
     initSelectElement();
-    checkInstallApp().then();
 }
 
 window.onload = () => {
@@ -162,32 +166,3 @@ window.onload = () => {
 addEventListener('DOMContentLoaded', (event) => {
     init();
 });
-
-
-const status = document.getElementById('status');
-const ul = document.getElementById('installedApps');
-
-window.addEventListener('load', () => {
-    // Check to see if the API is supported.
-    if ('getInstalledRelatedApps' in navigator) {
-        const divNotSupported = document.getElementById('notSupported');
-        divNotSupported.classList.toggle('hidden', true);
-        checkForRelatedApps();
-    }
-});
-
-function checkForRelatedApps() {
-    navigator.getInstalledRelatedApps().then((relatedApps) => {
-        status.textContent = `resolved (${relatedApps.length})`;
-        relatedApps.forEach((app) => {
-            const lines = [];
-            lines.push(`<b>id:</b> <code>${app.id}</code>`);
-            lines.push(`<b>platform:</b> ${app.platform}`);
-            lines.push(`<b>url:</b> <a href="${app.url}">${app.url}</a>`);
-            const li = document.createElement('li');
-            li.innerHTML = lines.join('<br>');
-            ul.appendChild(li);
-        });
-    });
-}
-
