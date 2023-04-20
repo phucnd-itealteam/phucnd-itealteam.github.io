@@ -8,12 +8,71 @@
     <link rel="stylesheet" href="/style.css">
     <meta name="theme-color" content="#3f51b5">
     <link rel="manifest" href="/manifest.json">
+    <!-- OT Expires 2020-01-14 -->
+
 </head>
 <body>
 <h1>
-    getInstalledRelatedApps v1
+    getInstalledRelatedApps
 </h1>
+
+<p id="about">
+    The <a href="https://developers.google.com/web/updates/2018/12/get-installed-related-apps">
+    <code>getInstalledRelatedApps</code></a> API is a new web platform API
+    that allows your web app to check to see if your native app is installed
+    on the users device, and vice versa.
+</p>
+<div class="instructions">
+    <span class="instructionsCount">1</span>
+    <span>
+        Install <a
+            href="https://play.google.com/store/apps/details?id=vig.tictop.app">this app</a>
+      </span>
+</div>
+<div class="instructions">
+    <span class="instructionsCount">2</span>
+    <span>
+        Come back to this page
+      </span>
+</div>
+<p>
+    This demo checks to see if a specific
+    <a href="https://play.google.com/store/apps/details?id=vig.tictop.app">demo app</a> is
+    installed
+    from the Google Play Store. Only when it is installed will you see it
+    listed below. Try installing it to see how <code>getInstalledRelatedApps</code>
+    works when the expected app is installed.
+</p>
+
+<p>
+    Check out the <a href="https://glitch.com/edit/#!/get-installed-apps">source</a>
+    for this sample, or
+    <a href="https://glitch.com/edit/#!/remix/get-installed-apps">remix it</a>
+    on Glitch.
+</p>
+
+<p id="requireHTTPS" class="hidden">
+    <b>STOP!</b> This page <b>must</b> be served over HTTPS.
+    Please <a>reload this page via HTTPS</a>.
+</p>
+
+<p id="notSupported">
+    <b>Sorry!</b> This browser doesn't support the <code>getInstalledRelatedApps</code>.
+    The API is only available as an origin trial in Chrome 73+ on Android.
+</p>
+
+<div>
+    <b>Installed Apps:</b> <span id="status"></span>
+    <ul id="installedApps">
+    </ul>
+</div>
+
+
 <button onclick="openApp()">Open App</button>
+
+<script src="/common.js"></script>
+<script src="/demo.js"></script>
+
 
 <script>
     function openApp() {
@@ -35,5 +94,5 @@
         }
     }
 </script>
+
 </body>
-</html>
