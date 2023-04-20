@@ -7,11 +7,16 @@ window.addEventListener('load', () => {
         const divNotSupported = document.getElementById('notSupported');
         divNotSupported.classList.toggle('hidden', true);
         checkForRelatedApps();
+    } else {
+        alert("not support")
     }
 });
 
 function checkForRelatedApps() {
+
     navigator.getInstalledRelatedApps().then((relatedApps) => {
+        alert(JSON.stringify(relatedApps))
+
         status.textContent = `resolved (${relatedApps.length})`;
         relatedApps.forEach((app) => {
             const lines = [];
